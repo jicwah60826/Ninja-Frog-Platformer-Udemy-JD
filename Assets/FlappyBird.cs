@@ -33,4 +33,13 @@ public class FlappyBird : MonoBehaviour
         theRB.gravityScale = gravityScale;
         theRB.AddForce(Vector2.up * flyForce, ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            
+            PlayerController.instance.Jump();
+        }
+    }
 }

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         RunCheck();
         Move();
         TurnCheck();
-        Jump();
+        JumpCheck();
         PlayerAnimations();
         DevCommands();
     }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void JumpCheck()
     {
         //get jumps
 
@@ -96,18 +96,28 @@ public class PlayerController : MonoBehaviour
             {
                 if (isGrounded)
                 {
-                    theRB.velocity = new Vector2(theRB.velocity.x, stats.jumpForce);
-                    AudioManager.instance.PlaySFX(0); // Jump Sound
+                    Jump();
                 }
                 else if (_additionalJumps > 0)
                 {
-                    theRB.velocity = new Vector2(theRB.velocity.x, stats.jumpForce);
-                    _additionalJumps -= 1;
-                    anim.SetTrigger("doDoubleJump");
-                    AudioManager.instance.PlaySFX(0); // Jump Sound
+                    DoubleJump();
                 }
             }
         }
+    }
+
+    private void DoubleJump()
+    {
+        theRB.velocity = new Vector2(theRB.velocity.x, stats.jumpForce);
+        _additionalJumps -= 1;
+        anim.SetTrigger("doDoubleJump");
+        AudioManager.instance.PlaySFX(18); // Jump Sound
+    }
+
+    public void Jump()
+    {
+        theRB.velocity = new Vector2(theRB.velocity.x, stats.jumpForce);
+        AudioManager.instance.PlaySFX(17); // Jump Sound
     }
 
     private void TurnCheck()

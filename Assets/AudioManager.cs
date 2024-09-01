@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource bossBattle;
     public AudioSource winScreen;
     public AudioSource[] soundEffects;
+    public AudioSource[] pickupSFX;
 
     /*
         0: Player Jump
@@ -32,6 +33,9 @@ public class AudioManager : MonoBehaviour
         14: Enemy Hit
         15: Enemy Plant Shoot
         16: Player Respawn
+        17: Hero Jump Hollow Knight
+        18: Double Jump Hollow Knight
+        19: Hero Damage Hollow Knight
     */
 
     private void Awake()

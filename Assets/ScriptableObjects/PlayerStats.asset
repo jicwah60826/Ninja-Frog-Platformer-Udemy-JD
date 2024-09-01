@@ -15,8 +15,8 @@ MonoBehaviour:
   level: 5
   moveSpeed: 12
   runSpeed: 25
-  jumpForce: 19
-  additionalJumps: 3
+  jumpForce: 18
+  additionalJumps: 2
   healthReChargeRate: 1
   knockbackLength: 1.5
   knockbackForce: 6

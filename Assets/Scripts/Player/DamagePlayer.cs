@@ -17,7 +17,7 @@ public class DamagePlayer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerHealthController.instance.DamagePlayer(damageAmount);
-            AudioManager.instance.PlaySFX(1); // Player Damage
+            AudioManager.instance.PlaySFX(19); // Player Damage
         }
     }
 }
