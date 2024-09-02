@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleCount: 0
+  extraLifeThreshold: 100
