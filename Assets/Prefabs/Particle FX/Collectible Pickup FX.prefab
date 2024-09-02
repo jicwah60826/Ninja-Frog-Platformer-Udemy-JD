@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8056949480927212601}
   - component: {fileID: 5820032175882397420}
   m_Layer: 0
-  m_Name: Apple Pickup FX
+  m_Name: Collectible Pickup FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.6431373, g: 0.8000001, b: 0.25490198, a: 1}
-      maxColor: {r: 0.8000001, g: 0.18431373, b: 0.2784314, a: 1}
+      minColor: {r: 1, g: 0.9998462, b: 0.8349056, a: 1}
+      maxColor: {r: 1, g: 0.9614235, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
