@@ -39,14 +39,19 @@ public class AudioManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
-            // keep this alive in all scenes and don't reload for each scene
-            DontDestroyOnLoad(gameObject);
+            SetupAudioManager();
         }
-        else
+        // destroy instance if it not THIS one being setup
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetupAudioManager()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StopMusic()
