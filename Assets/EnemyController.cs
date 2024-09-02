@@ -20,6 +20,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float waitToDestroy;
 
+    [SerializeField]
+    private int fruitPenalty;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -43,7 +46,12 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !isDefeated)
         {
             PlayerHealthController.instance.DamagePlayer(damageAmount);
-            AudioManager.instance.PlaySFX(damageSFXIndex); // Player Damage
+            AudioManager.instance.PlaySFXPitched(damageSFXIndex); // Player Damage
+            if (fruitPenalty > 0)
+            {
+                // take away fruit per hit if enemy gives fruit penalty
+                CollectiblesManager.instance.CollectiblePenalty(fruitPenalty);
+            }
         }
     }
 
@@ -54,6 +62,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("Enemy dead!");
             AudioManager.instance.PlaySFX(deathSFXIndex);
             FindFirstObjectByType<PlayerController>().Jump();
+            // take awy fruit
             anim.SetTrigger("defeated");
             isDefeated = true;
         }

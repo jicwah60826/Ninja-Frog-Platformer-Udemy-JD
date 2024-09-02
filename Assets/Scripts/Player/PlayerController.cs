@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         theRB.velocity = new Vector2(theRB.velocity.x, stats.jumpForce);
-        AudioManager.instance.PlaySFX(17); // Jump Sound
+        AudioManager.instance.PlaySFXPitched(0); // Jump Sound
     }
 
     private void TurnCheck()

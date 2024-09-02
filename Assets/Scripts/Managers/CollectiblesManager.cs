@@ -31,4 +31,9 @@ public class CollectiblesManager : MonoBehaviour
             LifeManager.instance.AddLife();
         }
     }
+    public void CollectiblePenalty(int amount)
+    {
+        collectibleCount -= amount;
+        UIManager.instance.UpdateFruitCountUI(collectibleCount);
+    }
 }

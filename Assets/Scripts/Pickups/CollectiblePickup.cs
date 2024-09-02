@@ -22,7 +22,7 @@ public class CollectiblePickup : MonoBehaviour
                 CollectiblesManager.instance.GetCollectible(collectibleAmount);
                 Debug.Log(collectibleAmount);
                 _isCollected = true;
-                AudioManager.instance.PlaySFX(3); // Pickup sound
+                AudioManager.instance.PlaySFXPitched(3); // Pickup sound
                 Instantiate(pickupEffect, transform.position, transform.rotation);
             }
             Destroy(gameObject);

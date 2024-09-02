@@ -76,6 +76,17 @@ public class AudioManager : MonoBehaviour
         soundEffects[sfxNumber].Stop(); // stop the sound if it is playing
         soundEffects[sfxNumber].Play(); // play the sound. allows playing sound in fast repetition
     }
+    public void PlaySFXPitched(int sfxNumber)
+    {
+
+        soundEffects[sfxNumber].Stop(); // stop the sound if it is playing
+
+        // Do a random pitch
+        soundEffects[sfxNumber].pitch = Random.Range(.75f,1.25f);
+
+        // Play the pitched sound
+        soundEffects[sfxNumber].Play(); // play the sound. allows playing sound in fast repetition
+    }
 
     public void StopSFX(int sfxNumber)
     {

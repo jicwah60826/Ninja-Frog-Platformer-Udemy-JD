@@ -21,6 +21,7 @@ public class ExtraJumpPickup : MonoBehaviour
                 {
                     Debug.Log("jumps added: " + jumpsToAdd);
                     stats.additionalJumps += jumpsToAdd;
+                    AudioManager.instance.PlaySFX(3); // Pickup sound
                     Instantiate(pickupEffect, transform.position, transform.rotation);
                 }
             }
