@@ -8,9 +8,6 @@ public class FlappyBird : MonoBehaviour
     private Rigidbody2D theRB;
 
     [SerializeField]
-    private Collider2D col;
-
-    [SerializeField]
     private float flyForce;
 
     [SerializeField]
@@ -30,15 +27,15 @@ public class FlappyBird : MonoBehaviour
 
     private void flappyBird()
     {
-        theRB.gravityScale = gravityScale;
-        theRB.AddForce(Vector2.up * flyForce, ForceMode2D.Impulse);
+        //theRB.gravityScale = gravityScale;
+        //theRB.AddForce(Vector2.up * flyForce, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            
+            PlayerController.instance.isGrounded = true;
             PlayerController.instance.Jump();
         }
     }
