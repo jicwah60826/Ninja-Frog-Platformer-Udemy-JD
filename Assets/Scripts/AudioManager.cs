@@ -5,13 +5,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource level1;
-    public AudioSource level2;
-    public AudioSource levelSelect;
-    public AudioSource levelVictory;
-    public AudioSource mainMenu;
-    public AudioSource bossBattle;
-    public AudioSource winScreen;
+    public AudioSource menuMusic,
+        bossMusic,
+        levelCompleteMusic;
+    public AudioSource[] levelTracks;
     public AudioSource[] soundEffects;
 
     /*
@@ -40,49 +37,33 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            // keep this alive in all scenes and don't reload for each scene
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Start is called before the first frame update
-    void Start() { }
-
-    // Update is called once per frame
-    void Update() { }
-
-    public void PlayMainMenuMusic()
+    public void StopMusic()
     {
-        mainMenu.Stop();
-        mainMenu.Play();
-    }
+        menuMusic.Stop();
+        bossMusic.Stop();
+        levelCompleteMusic.Stop();
 
-    public void PlayLevel1Music()
-    {
-        level1.Stop();
-        level1.Play();
-    }
+        foreach (AudioSource track in levelTracks)
+        {
+            track.Stop();
+        }
 
-    public void PlayLevel2Music()
-    {
-        level2.Stop();
-        level2.Play();
-    }
-
-    public void PlayLevelSelectMusic()
-    {
-        levelSelect.Stop();
-        levelSelect.Play();
-    }
-
-    public void PlayLevelVictoryMusic()
-    {
-        levelVictory.Stop();
-        levelVictory.Play();
-    }
-
-    public void PlayWinScreenMusic()
-    {
-        winScreen.Stop();
-        winScreen.Play();
+        foreach (AudioSource track in soundEffects)
+        {
+            track.Stop();
+        }
     }
 
     public void PlaySFX(int sfxNumber)
@@ -96,9 +77,27 @@ public class AudioManager : MonoBehaviour
         soundEffects[sfxNumber].Stop();
     }
 
-    public void PlayBossBattle()
+    public void PlayMenuMusic()
     {
-        bossBattle.Stop();
-        bossBattle.Play();
+        StopMusic();
+        menuMusic.Play();
+    }
+
+    public void PlayBossMusic()
+    {
+        StopMusic();
+        bossMusic.Play();
+    }
+
+    public void PlayLevelCompleteMusic()
+    {
+        StopMusic();
+        levelCompleteMusic.Play();
+    }
+
+    public void PlayLevelMusic(int trackToPlay)
+    {
+        StopMusic();
+        levelTracks[trackToPlay].Play();
     }
 }

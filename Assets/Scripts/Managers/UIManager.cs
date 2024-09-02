@@ -81,12 +81,14 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
+    /*     public void MainMenu()
+        {
+            AudioManager.instance.PlayMenuMusic();
+            SceneManager.LoadScene(0);
+        } */
 
     public void UpdateFruitCountUI(int amount)
     {
@@ -115,6 +117,7 @@ public class UIManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(mainMenuScene);
+        AudioManager.instance.PlayMenuMusic();
         Time.timeScale = 1f;
     }
 
@@ -125,7 +128,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
         Debug.Log("Quitting Game");
+        Application.Quit();
     }
 }
