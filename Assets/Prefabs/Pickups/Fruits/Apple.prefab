@@ -154,9 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectibleAmount: 1
   pickupEffect: {fileID: 1197038804320663144, guid: 7b73c803222677d4fb27e910413e6997, type: 3}
-  assignRandomValue: 0
-  lowRange: 0
-  highRange: 0
 --- !u!58 &541392380568312044
 CircleCollider2D:
   m_ObjectHideFlags: 0

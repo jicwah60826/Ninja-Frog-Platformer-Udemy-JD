@@ -22,6 +22,11 @@ public class CollectiblesManager : MonoBehaviour
         {
             // reduce collectibles
             collectibleCount -= extraLifeThreshold;
+            // protect from showing negative
+            if (collectibleCount <= 0)
+            {
+                collectibleCount = 0;
+            }
             // add life to player
             LifeManager.instance.AddLife();
         }

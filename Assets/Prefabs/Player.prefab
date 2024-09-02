@@ -136,17 +136,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: eaba52ce2768dfb4893ddee4f4c530e6, type: 2}
   theRB: {fileID: 7893076606270257002}
-  theAnim: {fileID: 0}
   isGrounded: 0
   groundCheckPoint: {fileID: 3619513933254320456}
   groundCheckRadius: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  knockBackForce: 0
-  knockBackCounter: 0
-  knockBackTotalTime: 0
-  knockFromRight: 0
   anim: {fileID: 4267056802811598310}
 --- !u!114 &3680312198398110394
 MonoBehaviour:
@@ -162,7 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 5
-  invincLength: 1
+  deathEffect: {fileID: 2777302195205627261, guid: 789c7ca1a30194f47aa049933282d828, type: 3}
+  respawnEffect: {fileID: 2777302195205627261, guid: 4f202fdacc2540d4db9f5d53b4059721, type: 3}
   playerSprite: {fileID: 6394557455959090863}
   flashInvincibility: 0
   flashLength: 0.05
@@ -204,7 +200,6 @@ CapsuleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2438988938355474359}
   m_Enabled: 1
-  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 3130be1028eb86e419d6011ec3f29f49, type: 2}
   m_IncludeLayers:
@@ -228,14 +223,13 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
+  m_UsedByComposite: 0
   m_Offset: {x: -0.0066809654, y: -0.25}
   m_Size: {x: 1.2698622, y: 1.4246982}
   m_Direction: 0
 --- !u!95 &4267056802811598310
 Animator:
-  serializedVersion: 7
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -249,7 +243,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

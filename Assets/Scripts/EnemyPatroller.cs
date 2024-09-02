@@ -22,6 +22,8 @@ public class EnemyPatroller : MonoBehaviour
 
     private bool isMoving;
 
+    public EnemyController theEC;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,46 +45,49 @@ public class EnemyPatroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // move towards the 1st patrol point
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            patrolPoints[currentPoint].position,
-            moveSpeed * Time.deltaTime
-        );
-
-        if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001)
+        if (theEC.isDefeated == false)
         {
-            // start counting down
-            waitCounter -= Time.deltaTime;
-            isMoving = false;
+            // move towards the 1st patrol point
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                patrolPoints[currentPoint].position,
+                moveSpeed * Time.deltaTime
+            );
 
-            if (waitCounter <= 0)
+            if (Vector3.Distance(transform.position, patrolPoints[currentPoint].position) < .001)
             {
-                // move to the next point and reset timer
-                currentPoint++;
+                // start counting down
+                waitCounter -= Time.deltaTime;
+                isMoving = false;
 
-                // if we reach the last point the array, set back to zero to move back
-                if (currentPoint >= patrolPoints.Length)
+                if (waitCounter <= 0)
                 {
-                    currentPoint = 0;
-                }
+                    // move to the next point and reset timer
+                    currentPoint++;
 
-                waitCounter = timeAtPoints;
-                isMoving = true;
+                    // if we reach the last point the array, set back to zero to move back
+                    if (currentPoint >= patrolPoints.Length)
+                    {
+                        currentPoint = 0;
+                    }
 
-                // flip - if on the LEFT of the next patrol point - face right
-                if (transform.position.x < patrolPoints[currentPoint].position.x)
-                {
-                    transform.localScale = new Vector3(-1f, 1f, 1f);
-                }
-                else
-                {
-                    transform.localScale = Vector3.one;
+                    waitCounter = timeAtPoints;
+                    isMoving = true;
+
+                    // flip - if on the LEFT of the next patrol point - face right
+                    if (transform.position.x < patrolPoints[currentPoint].position.x)
+                    {
+                        transform.localScale = new Vector3(-1f, 1f, 1f);
+                    }
+                    else
+                    {
+                        transform.localScale = Vector3.one;
+                    }
                 }
             }
-        }
 
-        // animations
-        anim.SetBool("isMoving", isMoving);
+            // animations
+            anim.SetBool("isMoving", isMoving);
+        }
     }
 }
