@@ -972,13 +972,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204766075}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1718567988}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 536673404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274463615
 GameObject:
@@ -990,7 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 274463616}
   m_Layer: 0
-  m_Name: Far
+  m_Name: Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1636,6 +1636,8 @@ Transform:
   - {fileID: 1804203054}
   - {fileID: 274463616}
   - {fileID: 1904316859}
+  - {fileID: 204766077}
+  - {fileID: 2098256534}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &536673405
@@ -3652,6 +3654,7 @@ MonoBehaviour:
   - {fileID: 759188103}
   moveSpeed: 3
   timeAtPoints: 2
+  anim: {fileID: 1304706735}
 --- !u!1 &1320093823
 GameObject:
   m_ObjectHideFlags: 0
@@ -50138,7 +50141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804203054}
   m_Layer: 0
-  m_Name: BG
+  m_Name: Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50575,7 +50578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904316859}
   m_Layer: 0
-  m_Name: Mid
+  m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50918,7 +50921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098256533}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.177255, y: -0.46536872, z: -0.08491061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50926,7 +50929,7 @@ Transform:
   - {fileID: 1187647782}
   - {fileID: 717276703}
   - {fileID: 340730641}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 536673404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115007132
 GameObject:
@@ -51931,12 +51934,10 @@ SceneRoots:
   - {fileID: 275970226469573156}
   - {fileID: 2115007133}
   - {fileID: 685705007}
-  - {fileID: 204766077}
   - {fileID: 536673404}
   - {fileID: 502708573}
   - {fileID: 203266603}
   - {fileID: 1632856289}
   - {fileID: 1103067040554438785}
-  - {fileID: 1427678196}
   - {fileID: 1304706736}
-  - {fileID: 2098256534}
+  - {fileID: 1427678196}

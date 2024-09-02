@@ -18,6 +18,10 @@ public class EnemyPatroller : MonoBehaviour
 
     private float waitCounter;
 
+    private Animator anim;
+
+    private bool isMoving;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,11 @@ public class EnemyPatroller : MonoBehaviour
 
         // intialize timer
         waitCounter = timeAtPoints;
+
+        // get animator component
+        anim = GetComponent<Animator>();
+
+        isMoving = true;
     }
 
     // Update is called once per frame
@@ -45,19 +54,35 @@ public class EnemyPatroller : MonoBehaviour
         {
             // start counting down
             waitCounter -= Time.deltaTime;
+            isMoving = false;
 
             if (waitCounter <= 0)
             {
                 // move to the next point and reset timer
                 currentPoint++;
-                waitCounter = timeAtPoints;
-            }
 
-            // if we reach the last point the array, set back to zero to move back
-            if (currentPoint >= patrolPoints.Length)
-            {
-                currentPoint = 0;
+                // if we reach the last point the array, set back to zero to move back
+                if (currentPoint >= patrolPoints.Length)
+                {
+                    currentPoint = 0;
+                }
+
+                waitCounter = timeAtPoints;
+                isMoving = true;
+
+                // flip - if on the LEFT of the next patrol point - face right
+                if (transform.position.x < patrolPoints[currentPoint].position.x)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
+                else
+                {
+                    transform.localScale = Vector3.one;
+                }
             }
         }
+
+        // animations
+        anim.SetBool("isMoving", isMoving);
     }
 }

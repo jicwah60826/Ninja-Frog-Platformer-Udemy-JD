@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public PlayerStats stats;
     public Rigidbody2D theRB;
     private float _activeSpeed;
-    public Animator theAnim;
 
     // Grounded & Jump vars
     public bool isGrounded;
