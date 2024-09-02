@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     public TMP_Text fruitCountText;
     public GameObject gameOverScreen;
 
+    public GameObject pauseScreen;
+
+    public int mainMenuScene;
+
     private void Awake()
     {
         instance = this;
@@ -26,6 +30,15 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameOverScreen.SetActive(false);
+        pauseScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -75,12 +88,44 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-        public void UpdateFruitCountUI(int amount)
+    public void UpdateFruitCountUI(int amount)
     {
         fruitCountText.text = amount.ToString();
     }
 
-    public void AddLifeAnim(){
+    public void AddLifeAnim()
+    {
         theAnim.SetTrigger("AddLife");
+    }
+
+    public void PauseUnpause()
+    {
+        if (pauseScreen.activeSelf == false)
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
+        Time.timeScale = 1f;
+    }
+
+    public void ResumeGame()
+    {
+        PauseUnpause();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quitting Game");
     }
 }
