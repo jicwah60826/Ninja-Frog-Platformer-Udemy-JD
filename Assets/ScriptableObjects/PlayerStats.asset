@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a7ee4060133c443a70722ea1a906a4, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  level: 5
-  moveSpeed: 12
-  runSpeed: 25
+  level: 1
+  moveSpeed: 8
+  runSpeed: 16
   jumpForce: 18
-  additionalJumps: 2
-  healthReChargeRate: 1
-  knockbackLength: 1.5
-  knockbackForce: 6
-  invincLength: 1.5
+  additionalJumps: 0
+  healthReChargeRate: 0.25
+  knockbackLength: 1
+  knockbackForce: 5
+  invincLength: 1

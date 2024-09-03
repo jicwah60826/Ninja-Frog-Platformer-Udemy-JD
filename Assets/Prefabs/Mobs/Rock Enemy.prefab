@@ -242,6 +242,7 @@ MonoBehaviour:
   deathSFXIndex: 20
   isDefeated: 0
   waitToDestroy: 0.5
+  fruitPenalty: 0
 --- !u!70 &7147751125275310208
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

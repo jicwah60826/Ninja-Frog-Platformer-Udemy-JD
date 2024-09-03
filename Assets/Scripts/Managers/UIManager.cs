@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverScreen;
 
     public GameObject pauseScreen;
+    public Image fadeScreen;
+    public float fadeSpeed;
+    public bool fadingToBlack;
+    public bool fadingFromBlack;
 
     public int mainMenuScene;
 
@@ -31,6 +36,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
+        fadingFromBlack = true;
     }
 
     private void Update()
@@ -39,6 +45,25 @@ public class UIManager : MonoBehaviour
         {
             PauseUnpause();
         }
+
+        // Fading Controls
+
+        if (fadingFromBlack)
+        {
+            fadeScreen.color = new Color(
+                fadeScreen.color.r,
+                fadeScreen.color.g,
+                fadeScreen.color.b,
+                Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
+        }
+        if (fadingToBlack)
+        {
+            fadeScreen.color = new Color(
+                fadeScreen.color.r,
+                fadeScreen.color.g,
+                fadeScreen.color.b,
+                Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
+        }
     }
 
     public void UpdateHealthDisplay(int health, int maxHealth)
@@ -46,11 +71,6 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < heartIcons.Length; i++)
         {
             heartIcons[i].enabled = true;
-
-            /* if (health <= i)
-           {
-               heartIcons[i].enabled = false;
-           } */
 
             if (health > i)
             {
@@ -83,12 +103,6 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
-
-    /*     public void MainMenu()
-        {
-            AudioManager.instance.PlayMenuMusic();
-            SceneManager.LoadScene(0);
-        } */
 
     public void UpdateFruitCountUI(int amount)
     {
@@ -130,5 +144,17 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Quitting Game");
         Application.Quit();
+    }
+
+    public void FadeFromBlack()
+    {
+        fadingToBlack = false;
+        fadingFromBlack = true;
+    }
+
+    public void FadeToBlack()
+    {
+        fadingToBlack = true;
+        fadingFromBlack = false;
     }
 }
