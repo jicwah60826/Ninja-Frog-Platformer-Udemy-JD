@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
         fadingFromBlack = true;
+        // Hide / Lock cursor movement in game window
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -54,7 +56,8 @@ public class UIManager : MonoBehaviour
                 fadeScreen.color.r,
                 fadeScreen.color.g,
                 fadeScreen.color.b,
-                Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
+                Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime)
+            );
         }
         if (fadingToBlack)
         {
@@ -62,7 +65,8 @@ public class UIManager : MonoBehaviour
                 fadeScreen.color.r,
                 fadeScreen.color.g,
                 fadeScreen.color.b,
-                Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
+                Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime)
+            );
         }
     }
 
@@ -120,11 +124,15 @@ public class UIManager : MonoBehaviour
         {
             pauseScreen.SetActive(true);
             Time.timeScale = 0f;
+            //show and unlock cursor
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             pauseScreen.SetActive(false);
             Time.timeScale = 1f;
+            // Hide / Lock cursor movement in game window
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
